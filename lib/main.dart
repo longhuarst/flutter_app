@@ -1,6 +1,24 @@
 import 'package:flutter/material.dart';
 
+import 'navigator/tab_navigator.dart';
+
 void main() => runApp(MyApp());
+
+
+//void main(){
+//  runApp(
+//    new Center(
+//      child: new Text(
+//        'hello world!',
+//        textDirection: TextDirection.ltr,
+//      ),
+//    )
+//  );
+//}
+
+
+
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -20,7 +38,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: TabNavigator(),//MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
