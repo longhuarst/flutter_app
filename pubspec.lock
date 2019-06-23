@@ -57,6 +57,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.2"
+  event_bus:
+    dependency: transitive
+    description:
+      name: event_bus
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
+  fixnum:
+    dependency: transitive
+    description:
+      name: fixnum
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.10.9"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -76,6 +90,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.3"
+  flutter_socket_io:
+    dependency: "direct main"
+    description:
+      name: flutter_socket_io
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.7"
   flutter_swiper:
     dependency: "direct main"
     description:
@@ -116,6 +137,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.6"
+  mqtt_client:
+    dependency: "direct main"
+    description:
+      name: mqtt_client
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.5.3"
   path:
     dependency: transitive
     description:
@@ -137,6 +165,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.5.0"
+  protobuf:
+    dependency: "direct main"
+    description:
+      name: protobuf
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.13.12"
   qr:
     dependency: transitive
     description:
@@ -177,6 +212,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  socket_flutter_plugin:
+    dependency: "direct main"
+    description:
+      name: socket_flutter_plugin
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   source_span:
     dependency: transitive
     description:
@@ -261,6 +303,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.8"
+  websocket:
+    dependency: "direct main"
+    description:
+      name: websocket
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.5"
 sdks:
   dart: ">=2.2.0 <3.0.0"
   flutter: ">=1.5.0 <2.0.0"

@@ -3,7 +3,17 @@ import 'package:flutter_app/pages/community_page.dart';
 import 'package:flutter_app/pages/home_page.dart';
 import 'package:flutter_app/pages/my_page.dart';
 import 'package:flutter_app/pages/search_page.dart';
+import 'package:socket_flutter_plugin/socket_flutter_plugin.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'package:flutter/services.dart';
 
+import 'dart:io';
+
+
+
+
+//import  'package:flutter_socket_io/flutter_socket_io.dart';
 
 
 
@@ -30,6 +40,8 @@ class TabNavigator extends StatefulWidget{
 class _TabNavigatorState extends State<TabNavigator>{
 
 
+  String _platformVersion = 'Unknown';
+
   //定义controller
   final PageController _controller = PageController(
     initialPage: 0,
@@ -47,7 +59,13 @@ class _TabNavigatorState extends State<TabNavigator>{
 //    _currentIndex = index;
 
   setState(() {
+
+    print('init');
     _currentIndex = index;
+
+    socket();
+
+    //initPlatformState();
   });
     print(index);
   }
@@ -149,6 +167,39 @@ class _TabNavigatorState extends State<TabNavigator>{
 
 
 
+
+
+
+
+
+
+
+  // Platform messages are asynchronous, so we initialize in an async method.
+  Future<void> initPlatformState() async {
+    try {
+      SocketFlutterPlugin myIO = new SocketFlutterPlugin();
+      myIO.socket("http://192.168.31.64:9006");
+      myIO.connect();
+      String jsonData =
+          '{"content":"test"}';
+      myIO.emit("chat",jsonData);
+      myIO.on("chat",(data){
+        debugPrint(data.toString());
+      });
+      print('complete');
+    } on PlatformException {
+
+      print('Failed to get platform version.');
+      _platformVersion = 'Failed to get platform version.';
+    }
+  }
+
+
+
+  Future<void> socket() async {
+
+    Socket.connect("192.168.31.64", 9006);
+  }
 
 
 
