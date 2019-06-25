@@ -54,6 +54,9 @@ class _TabNavigatorState extends State<TabNavigator>{
 
 
 
+  bool isConnected = false;
+
+
   //
   _pageChanged(int index){
 //    _currentIndex = index;
@@ -63,9 +66,10 @@ class _TabNavigatorState extends State<TabNavigator>{
     print('init');
     _currentIndex = index;
 
-    socket();
+//    socket();
 
-    //initPlatformState();
+    _connect('192.168.31.64',9006);
+    initPlatformState();
   });
     print(index);
   }
@@ -170,6 +174,10 @@ class _TabNavigatorState extends State<TabNavigator>{
 
 
 
+//  Future<void> connect
+
+
+
 
 
 
@@ -196,9 +204,63 @@ class _TabNavigatorState extends State<TabNavigator>{
 
 
 
-  Future<void> socket() async {
+//  Future<void> socket() async {
+//    try{
+//
+//
+//      Socket.connect("192.168.31.64", 9006);
+//
+//    }
+//  }
 
-    Socket.connect("192.168.31.64", 9006);
+
+  Socket _socket;
+
+  Future<Socket> _connect(String ip, int port) async{
+    if(!isConnected) {
+      print('connect...');
+        try {
+          _socket = await Socket.connect(ip, port, timeout: Duration(seconds: 5),);
+
+          isConnected = true;
+          print('---');
+          _socket.writeln('hellow');
+          _socket.listen(_onData, onError: _onError, onDone: _onDone);
+
+          print('exit');
+        }catch(e){
+          if(e is SocketException){
+            _onTimeout();
+          }else{
+            print("error : $e");
+          }
+        }
+    }
+    return _socket;
+  }
+
+
+  _onData(List<int> data){
+    print('ondata');
+  }
+
+
+
+  _onError(Object error){
+    print('error');
+
+    isConnected = false;
+  }
+
+  _onDone(){
+    print('done');
+
+  }
+
+
+  _onTimeout(){
+    print('timeout');
+    isConnected = false;
   }
 
 
